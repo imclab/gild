@@ -1,0 +1,59 @@
+cubicweb-bootstrap (0.6.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Rémi Cardona <remi.cardona@logilab.fr>  Wed, 19 Mar 2014 12:11:12 +0100
+
+cubicweb-bootstrap (0.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Katia Saurfelt <katia.saurfelt@logilab.fr>  Wed, 19 Mar 2014 11:34:36 +0100
+
+cubicweb-bootstrap (0.5.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Rémi Cardona <remi.cardona@logilab.fr>  Fri, 14 Mar 2014 11:12:18 +0100
+
+cubicweb-bootstrap (0.4.2-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Katia Saurfelt <katia.saurfelt@logilab.fr>  Mon, 10 Mar 2014 11:49:00 +0200
+
+cubicweb-bootstrap (0.4.1-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Katia Saurfelt <katia.saurfelt@logilab.fr>  Fri, 14 Feb 2014 11:42:00 +0200
+
+cubicweb-bootstrap (0.4.0-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Katia Saurfelt <katia.saurfelt@logilab.fr>  Fri, 18 Oct 2013 15:42:00 +0200
+
+cubicweb-bootstrap (0.3.0-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Aurélien Campéas <aurelien.campeas@logilab.fr>  Tue, 01 OCt 2013 14:19:00 +0200
+
+cubicweb-bootstrap (0.1.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Rémi Cardona <remi.cardona@logilab.fr>  Fri, 18 Oct 2013 10:56:05 +0200
+
+cubicweb-bootstrap (0.1.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Rémi Cardona <remi.cardona@logilab.fr>  Mon, 14 Oct 2013 11:00:09 +0200
+
+cubicweb-bootstrap (0.1.0-1) unstable; urgency=low
+
+  * initial release
+
+ -- Rémi Cardona <remi.cardona@logilab.fr>  Wed, 17 Jul 2013 10:34:18 +0200

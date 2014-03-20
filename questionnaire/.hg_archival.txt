@@ -1,0 +1,5 @@
+repo: 6e50e4aedaf3d464b1cbff5e30cc52232e9c1db9
+node: 4bdfbc3f15ea59a46f6d47123b1a6649c0ceeeba
+branch: default
+latesttag: cubicweb-questionnaire-debian-version-0.5.0
+latesttagdistance: 2

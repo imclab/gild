@@ -1,0 +1,5 @@
+repo: f7af3280e940952d4be6aa0c6f7c02f30d49c29f
+node: c07fb4c001b7b9ccaea73e9187cbe620fe9d4103
+branch: default
+latesttag: cubicweb-neuroimaging-debian-version-0.5.0
+latesttagdistance: 2

@@ -1,0 +1,42 @@
+cubicweb-genomics (0.7.0) unstable; urgency=low
+
+  * Small change in schema
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 17 Feb 2014 10:00:20 +0100
+
+cubicweb-genomics (0.6.0) unstable; urgency=low
+
+  * Update to bootstrap 0.3.0
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 20 Jan 2014 18:13:31 +0100
+
+cubicweb-genomics (0.5.0-1) unstable; urgency=low
+
+  * Update i18n and bootstrap 0.3.0
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 20 Jan 2014 18:13:11 +0100
+
+cubicweb-genomics (0.4.0-1) unstable; urgency=low
+
+  * Add CGH/sequencing results
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 09 Dec 2013 09:53:03 +0100
+
+cubicweb-genomics (0.3.0-1) unstable; urgency=low
+
+  * Update schema with CGH/sequencing entities
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Wed, 23 Oct 2013 13:42:43 +0200
+
+cubicweb-genomics (0.2.0-1) unstable; urgency=low
+
+  * update copyright, add AUTHORS.rst file
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Fri, 05 Jul 2013 09:30:07 +0200
+
+cubicweb-genomics (0.1.0-1) unstable; urgency=low
+
+  * initial release
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Thu, 17 Jan 2013 14:24:29 +0100
+

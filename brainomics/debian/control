@@ -1,0 +1,27 @@
+Source: cubicweb-brainomics
+Section: web
+Priority: optional
+Maintainer: LOGILAB S.A. (Paris, FRANCE) <contact@logilab.fr>
+Build-Depends: debhelper (>= 7), python (>=2.5), python-support
+Standards-Version: 3.9.3
+XS-Python-Version: >= 2.5
+
+Package: cubicweb-brainomics
+Architecture: all
+Depends: cubicweb-common (>= 3.17.0),
+         cubicweb-questionnaire,
+         cubicweb-neuroimaging,
+         cubicweb-genomics,
+         cubicweb-medicalexp,
+         cubicweb-card,
+         cubicweb-bootstrap,
+         cubicweb-comment,
+         cubicweb-jqplot,
+         ${python:Depends}
+Description: Cube for the Brainomics Project, see http://www.brainomics.net/
+ CubicWeb is a semantic web application framework.
+ .
+ Cube for the Brainomics Project, see http://www.brainomics.net/
+ .
+ This package will install all the components you need to run the
+ cubicweb-brainomics application (cube :)..

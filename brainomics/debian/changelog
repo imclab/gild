@@ -1,0 +1,56 @@
+cubicweb-brainomics (0.4.4) unstable; urgency=low
+
+  * Fix bootstrap dependancy
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 20 Jan 2014 18:17:00 +0100
+
+cubicweb-brainomics (0.4.3) unstable; urgency=low
+
+  * Fix CSV action
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Tue, 26 Nov 2013 11:29:02 +0100
+
+cubicweb-brainomics (0.4.2) unstable; urgency=low
+
+  * Fix packaging information
+
+ -- Vladimir Popescu <Vladimir.Popescu@logilab.fr>  Thu, 14 Nov 2013 15:34:01 +0100
+
+cubicweb-brainomics (0.4.1) unstable; urgency=low
+
+  * Fix pkginfo
+
+  * Fix facets
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Thu, 14 Nov 2013 14:41:04 +0100
+
+cubicweb-brainomics (0.4.0) unstable; urgency=low
+
+  * Correct importers
+
+  * Add timeline
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Wed, 23 Oct 2013 11:42:39 +0200
+
+cubicweb-brainomics (0.3.0-1) unstable; urgency=low
+
+  * Drop depencence to Orbui, use bootstrap.
+
+  * Backport views into the Brainomics cube.
+
+  * Add tabs, components, actions...
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Fri, 19 Jul 2013 10:11:26 +0200
+
+cubicweb-brainomics (0.2.0-1) unstable; urgency=low
+
+  * Small bug fixes in views (Xcede), typos. Add Imagen importer, and update schema accordingly.
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Wed, 03 Jul 2013 16:31:34 +0200
+
+cubicweb-brainomics (0.1.0-1) unstable; urgency=low
+
+  * initial release
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Thu, 17 Jan 2013 14:10:35 +0100
+

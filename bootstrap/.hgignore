@@ -1,0 +1,5 @@
+syntax: glob
+*.pyc
+debian/cubicweb-bootstrap*
+debian/files
+build-stamp

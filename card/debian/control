@@ -1,0 +1,22 @@
+Source: cubicweb-card
+Section: web
+Priority: optional
+Maintainer: Logilab Packaging Team <contact@logilab.fr>
+Build-Depends: debhelper (>= 7), python (>= 2.6), python-support
+Standards-Version: 3.9.3
+XS-Python-Version: >= 2.6
+Homepage: http://www.cubicweb.org/project/cubicweb-card
+
+Package: cubicweb-card
+Architecture: all
+Depends:
+ cubicweb-common (>= 3.15.0),
+ python-docutils,
+ ${python:Depends},
+ ${misc:Depends},
+Recommends: cubicweb-preview, cubicweb-seo
+Description: card component for the CubicWeb framework
+ This CubicWeb component models cards that are like wiki pages.
+ Cards have a title, an abstract and some textual content as text, rest or html.
+ .
+ CubicWeb is a semantic web application framework, see http://www.cubicweb.org

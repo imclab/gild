@@ -1,0 +1,7 @@
+repo: 837c8d42526a506263a127ede6182da0ca6ea736
+node: b291208f096fc84171d3d1b2649afe683b66b700
+branch: default
+latesttag: cubicweb-file-centos-version-1.16.0-1
+latesttag: cubicweb-file-debian-version-1.16.0-1
+latesttag: cubicweb-file-version-1.16.0
+latesttagdistance: 1

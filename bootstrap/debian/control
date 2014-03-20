@@ -1,0 +1,16 @@
+Source: cubicweb-bootstrap
+Section: web
+Priority: optional
+Maintainer: LOGILAB S.A. (Paris, FRANCE) <contact@logilab.fr>
+Build-Depends: debhelper (>= 7), python (>=2.5), python-support
+Standards-Version: 3.9.3
+XS-Python-Version: >= 2.5
+
+Package: cubicweb-bootstrap
+Architecture: all
+Depends: cubicweb-common (>= 3.18.3), ${python:Depends}, ${misc:Depends}
+Description: bootstrap-compatible components for CubicWeb
+ This cube provides bootstrap version of views, components,
+ boxes, etc. but does not provide a main template.
+ .
+ CubicWeb is a semantic web application framework, see http://www.cubicweb.org

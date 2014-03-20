@@ -1,0 +1,6 @@
+repo: 84dc5b9167cad8dd0d00f283433b84a351877a15
+node: a20b51a91ba7dd9b30ba7928bb2d965174a54ec9
+branch: default
+latesttag: cubicweb-comment-debian-version-1.9.1-1
+latesttag: cubicweb-comment-version-1.9.1
+latesttagdistance: 2

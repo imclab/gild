@@ -1,0 +1,7 @@
+repo: d19093dca8e9cbf57e896ca26b7484cbf1b5e1d8
+node: b3c59037b692afc22de4d8516c00faa395b1b7fa
+branch: default
+latesttag: cubicweb-card-centos-version-0.5.3-1
+latesttag: cubicweb-card-debian-version-0.5.3-1
+latesttag: cubicweb-card-version-0.5.3
+latesttagdistance: 4

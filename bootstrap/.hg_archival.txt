@@ -1,0 +1,7 @@
+repo: b6db0bd47cbbe281da10d467f73300e1ef44d55f
+node: c1be6619e12084dc92b8a0d6bdac6c28c9a450d4
+branch: default
+latesttag: cubicweb-bootstrap-centos-version-0.6.0-1
+latesttag: cubicweb-bootstrap-debian-version-0.6.0-1
+latesttag: cubicweb-bootstrap-version-0.6.0
+latesttagdistance: 1

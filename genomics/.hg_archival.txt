@@ -1,0 +1,5 @@
+repo: f97adc791a189af50c37c7c6d8bcaf2b255bec2a
+node: 3bb63e9832ec996e2ba0996a0af7b23e66291844
+branch: default
+latesttag: cubicweb-genomics-debian-version-0.7.0
+latesttagdistance: 2

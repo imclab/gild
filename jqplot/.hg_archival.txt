@@ -1,0 +1,7 @@
+repo: cf58d44a4c815f63df7e035e3c9fdf2574016ba6
+node: f677cdf5ee63c41c2d1775eba1cbd59260faf8d0
+branch: default
+latesttag: cubicweb-jqplot-centos-version-0.4.0-1
+latesttag: cubicweb-jqplot-debian-version-0.4.0-1
+latesttag: cubicweb-jqplot-version-0.4.0
+latesttagdistance: 3

@@ -1,0 +1,5 @@
+repo: f0f59a0dae02ea8d51d7a07558dc62acd59fb0e1
+node: 7068d8a3fbb3da2be3dda1359868fb02f7acffbe
+branch: default
+latesttag: cubicweb-medicalexp-debian-version-0.8.0
+latesttagdistance: 3

@@ -1,0 +1,50 @@
+cubicweb-medicalexp (0.8.0) unstable; urgency=low
+
+  * Small changes in schema and i18n.
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 17 Feb 2014 09:47:24 +0100
+
+cubicweb-medicalexp (0.7.0) unstable; urgency=low
+
+  * Update to bootstrap and modify the schema
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 20 Jan 2014 17:17:57 +0100
+
+cubicweb-medicalexp (0.6.0-1) unstable; urgency=low
+
+  * Support for Bootstrap, internationalisation
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 09 Dec 2013 08:52:31 +0100
+
+cubicweb-medicalexp (0.5.0-1) unstable; urgency=low
+
+  * Add disease, drug, therapy, ...
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Mon, 09 Dec 2013 08:51:55 +0100
+
+cubicweb-medicalexp (0.4.0-1) unstable; urgency=low
+
+  * Remove age of subject
+
+  * Add file cube for BFSS
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Wed, 23 Oct 2013 13:44:13 +0200
+
+cubicweb-medicalexp (0.3.0-1) unstable; urgency=low
+
+  * Drop dependence to Orbui
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Fri, 19 Jul 2013 09:51:54 +0200
+
+cubicweb-medicalexp (0.2.0-1) unstable; urgency=low
+
+  * new upstream release
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Fri, 05 Jul 2013 11:17:17 +0200
+
+cubicweb-medicalexp (0.1.0-1) unstable; urgency=low
+
+  * initial release
+
+ -- Vincent michel <Vincent.Michel@logilab.fr>  Thu, 17 Jan 2013 14:18:37 +0100
+
