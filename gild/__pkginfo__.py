@@ -13,7 +13,7 @@ author_email = ''
 description = 'Extensions of Brainomics Cubicweb cube that are shared by several projects'
 web = 'https://github.com/neurospin/gild'
 
-__depends__ =  {'cubicweb': '>= 3.17.3', 'cubicweb-brainomics': '>= 0.8.0'}
+__depends__ =  {'cubicweb': '>= 3.17.3', 'cubicweb-brainomics': '>= 0.4.6'}
 __recommends__ = {}
 
 classifiers = [
