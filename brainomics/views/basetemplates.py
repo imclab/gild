@@ -23,32 +23,32 @@ basetemplates.TheMainTemplate.doctype = HTML5
 ###############################################################################
 ### GLOBAL CALL ###############################################################
 ###############################################################################
-@monkeypatch(basetemplates.TheMainTemplate)
-def call(self, view):
-    self.set_request_content_type()
-    self.template_header(self.content_type, view)
-    w = self.w
-    w(u'<div class="row-fluid">')
-    w(u'<div class="span12" id="pageContent">')
-    vtitle = self._cw.form.get('vtitle')
-    if vtitle:
-        w(u'<div class="vtitle">%s</div>\n' % xml_escape(vtitle))
-    # display entity type restriction component
-    etypefilter = self._cw.vreg['components'].select_or_none(
-        'etypenavigation', self._cw, rset=self.cw_rset)
-    if etypefilter and etypefilter.cw_propval('visible'):
-        etypefilter.render(w=w)
-    nav_html = UStringIO()
-    if view and not view.handle_pagination:
-        view.paginate(w=nav_html.write)
-    w(nav_html.getvalue())
-    w(u'<div id="contentmain">\n')
-    view.render(w=w)
-    w(u'</div>\n') # closes id=contentmain
-    w(nav_html.getvalue())
-    w(u'</div>\n' # closes id=pageContent
-      u'</div>\n') # closes row-fluid
-    self.template_footer(view)
+#@monkeypatch(basetemplates.TheMainTemplate)
+#def call(self, view):
+#    self.set_request_content_type()
+#    self.template_header(self.content_type, view)
+#    w = self.w
+#    w(u'<div class="row-fluid">')
+#    w(u'<div class="span12" id="pageContent">')
+#    vtitle = self._cw.form.get('vtitle')
+#    if vtitle:
+#        w(u'<div class="vtitle">%s</div>\n' % xml_escape(vtitle))
+#    # display entity type restriction component
+#    etypefilter = self._cw.vreg['components'].select_or_none(
+#        'etypenavigation', self._cw, rset=self.cw_rset)
+#    if etypefilter and etypefilter.cw_propval('visible'):
+#        etypefilter.render(w=w)
+#    nav_html = UStringIO()
+#    if view and not view.handle_pagination:
+#        view.paginate(w=nav_html.write)
+#    w(nav_html.getvalue())
+#    w(u'<div id="contentmain">\n')
+#    view.render(w=w)
+#    w(u'</div>\n') # closes id=contentmain
+#    w(nav_html.getvalue())
+#    w(u'</div>\n' # closes id=pageContent
+#      u'</div>\n') # closes row-fluid
+#    self.template_footer(view)
 
 
 ###############################################################################
@@ -104,81 +104,81 @@ def template_html_header(self, content_type, page_title,
     if page_title:
         w(u'<title>%s</title>\n' % xml_escape(page_title))
 
-@monkeypatch(basetemplates.TheMainTemplate)
-def template_body_header(self, view):
-    w = self.w
-    w(u'<body>\n')
-    self.wview('header', rset=self.cw_rset, view=view)
-    # Toolbar
-    w(u'<div id="toolbar" class="container-fluid">\n'
-      u'<div class="row-fluid offset3">\n')
-    self.nav_toolbar(view)
-    w(u'</div></div>\n')
-    # Page
-    w(u'<div id="page" class="container-fluid">\n'
-      u'<div class="row-fluid">\n')
-    #w(u'<div class="span3">')
-    nb_boxes = self.nav_column(view, 'left')
-    #w(u'</div>')
-    if nb_boxes is not None and nb_boxes:
-        content_span = 9
-    else:
-        content_span = 12
-    w(u'<div id="contentColumn" class="span%s">' % content_span)
-    components = self._cw.vreg['components']
-    rqlcomp = components.select_or_none('rqlinput', self._cw, rset=self.cw_rset)
-    if rqlcomp:
-        rqlcomp.render(w=self.w, view=view)
-    msgcomp = components.select_or_none('applmessages', self._cw, rset=self.cw_rset)
-    if msgcomp:
-        msgcomp.render(w=self.w)
-    self.content_header(view)
-
-@monkeypatch(basetemplates.HTMLPageHeader)
-def main_header(self, view):
-    """build the top menu with authentification info and the rql box"""
-    spans = {'headtext': 3,
-             'header-center': 7,
-             'header-right': 2,
-             }
-    w = self.w
-    w(u'<div id="header" class="navbar">'
-      u'<div class="navbar-inner">'
-      u'<div class="container">'
-      u'<div class="row-fluid">')
-    prev_span_size = 0
-    for colid, context in self.headers:
-        components = self._cw.vreg['ctxcomponents'].poss_visible_objects(
-            self._cw, rset=self.cw_rset, view=view, context=context)
-        if components:
-            span_size = spans.get(colid, 2) + prev_span_size
-            prev_span_size = 0
-            w(u'<div id="%s" class="span%s">' % (colid, span_size))
-            klass = ' pull-right' if context in ('header-center', 'header-right') else ''
-            w(u'<ul class="nav%s">' % klass)
-            for comp in components:
-                w(u'<li>')
-                comp.render(w=w)
-                w(u'</li>')
-            w(u'</ul>')
-            w(u'</div>')
-        else:
-            # Keep size to make a bigger span the next time
-            prev_span_size += spans.get(colid, 2)
-    w(u'</div></div></div></div>\n')
-    # get login form to display it as modal window / Backport from Orbui
-    login = self._cw.vreg['forms'].select_or_none('logform', self._cw)
-    if login:
-        self.w(u'<div id="loginModal" class="modal hide fade in">'
-               u'<div class="modal-header">'
-               u'<a class="close" data-dismiss="modal">x</a>'
-               u'<h3>%s</h3>'
-               u'</div>'
-               u'<div class="modal-body">' % self._cw._('log in'))
-        login.render(w=self.w)
-    self.w(u'</div>'
-           u' <div class="modal-footer"></div>'
-           u'</div>')
+#@monkeypatch(basetemplates.TheMainTemplate)
+#def template_body_header(self, view):
+#    w = self.w
+#    w(u'<body>\n')
+#    self.wview('header', rset=self.cw_rset, view=view)
+#    # Toolbar
+#    w(u'<div id="toolbar" class="container-fluid">\n'
+#      u'<div class="row-fluid offset3">\n')
+#    self.nav_toolbar(view)
+#    w(u'</div></div>\n')
+#    # Page
+#    w(u'<div id="page" class="container-fluid">\n'
+#      u'<div class="row-fluid">\n')
+#    #w(u'<div class="span3">')
+#    nb_boxes = self.nav_column(view, 'left')
+#    #w(u'</div>')
+#    if nb_boxes is not None and nb_boxes:
+#        content_span = 9
+#    else:
+#        content_span = 12
+#    w(u'<div id="contentColumn" class="span%s">' % content_span)
+#    components = self._cw.vreg['components']
+#    rqlcomp = components.select_or_none('rqlinput', self._cw, rset=self.cw_rset)
+#    if rqlcomp:
+#        rqlcomp.render(w=self.w, view=view)
+#    msgcomp = components.select_or_none('applmessages', self._cw, rset=self.cw_rset)
+#    if msgcomp:
+#        msgcomp.render(w=self.w)
+#    self.content_header(view)
+#
+#@monkeypatch(basetemplates.HTMLPageHeader)
+#def main_header(self, view):
+#    """build the top menu with authentification info and the rql box"""
+#    spans = {'headtext': 3,
+#             'header-center': 7,
+#             'header-right': 2,
+#             }
+#    w = self.w
+#    w(u'<div id="header" class="navbar">'
+#      u'<div class="navbar-inner">'
+#      u'<div class="container">'
+#      u'<div class="row-fluid">')
+#    prev_span_size = 0
+#    for colid, context in self.headers:
+#        components = self._cw.vreg['ctxcomponents'].poss_visible_objects(
+#            self._cw, rset=self.cw_rset, view=view, context=context)
+#        if components:
+#            span_size = spans.get(colid, 2) + prev_span_size
+#            prev_span_size = 0
+#            w(u'<div id="%s" class="span%s">' % (colid, span_size))
+#            klass = ' pull-right' if context in ('header-center', 'header-right') else ''
+#            w(u'<ul class="nav%s">' % klass)
+#            for comp in components:
+#                w(u'<li>')
+#                comp.render(w=w)
+#                w(u'</li>')
+#            w(u'</ul>')
+#            w(u'</div>')
+#        else:
+#            # Keep size to make a bigger span the next time
+#            prev_span_size += spans.get(colid, 2)
+#    w(u'</div></div></div></div>\n')
+#    # get login form to display it as modal window / Backport from Orbui
+#    login = self._cw.vreg['forms'].select_or_none('logform', self._cw)
+#    if login:
+#        self.w(u'<div id="loginModal" class="modal hide fade in">'
+#               u'<div class="modal-header">'
+#               u'<a class="close" data-dismiss="modal">x</a>'
+#               u'<h3>%s</h3>'
+#               u'</div>'
+#               u'<div class="modal-body">' % self._cw._('log in'))
+#        login.render(w=self.w)
+#    self.w(u'</div>'
+#           u' <div class="modal-footer"></div>'
+#           u'</div>')
 
 
 
