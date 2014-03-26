@@ -72,11 +72,11 @@ GenomicMeasure.add_relation(SubjectRelation('Device', cardinality='?*', inlined=
 
 # Measure -> ExternalResources
 # Questionnaire may have some specifications files
-Questionnaire.add_relation(SubjectRelation('ExternalResource', cardinality='*1'), name='external_resources')
+Questionnaire.add_relation(SubjectRelation('FileSet', cardinality='*1'), name='external_resources')
 # Some questionnaire run could have specific results files (subject dependant)
-QuestionnaireRun.add_relation(SubjectRelation('ExternalResource', cardinality='*1'), name='external_resources')
-Scan.add_relation(SubjectRelation('ExternalResource', cardinality='*1'), name='external_resources')
-GenomicMeasure.add_relation(SubjectRelation('ExternalResource', cardinality='*1'), name='external_resources')
+QuestionnaireRun.add_relation(SubjectRelation('FileSet', cardinality='*1'), name='external_resources')
+Scan.add_relation(SubjectRelation('FileSet', cardinality='*1'), name='external_resources')
+GenomicMeasure.add_relation(SubjectRelation('FileSet', cardinality='*1'), name='external_resources')
 
 # Various relations
 Questionnaire.add_relation(SubjectRelation('ScoreDefinition', cardinality='*?'), name='definitions')

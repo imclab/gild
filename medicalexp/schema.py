@@ -96,11 +96,12 @@ class Device(EntityType):
 
 class Configuration(EntityType):
     """ Configuration of a device """
-    filepath = String(required=True, indexed=True, maxsize=2048)
+    filepath = String(required=True, indexed=True, maxsize=256)
     start_datetime = Date()
     end_datetime = Date()
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
-    results_file = SubjectRelation('File', cardinality='**') # XXX to clarify what happens when a 'File' object is deleted.
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
+# XXX to clarify what happens when a 'File' object is deleted.
+    results_file = SubjectRelation('File', cardinality='**')
 
 
 class Protocol(EntityType):
@@ -110,7 +111,7 @@ class Protocol(EntityType):
     related_study = SubjectRelation('Study', cardinality='1*', inlined=True, composite='object')
     start_datetime = Date()
     end_datetime = Date()
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
 
 
 ###############################################################################
@@ -224,7 +225,7 @@ class Assessment(EntityType):
     datetime = Date()
     age_of_subject = Int(indexed=True)
     timepoint = String(maxsize=64)
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
     results_file = SubjectRelation('File', cardinality='**') # XXX What happens when a 'File' is deleted?
     related_study = SubjectRelation('Study', cardinality='1*', inlined=True, composite='object')
 
@@ -234,8 +235,8 @@ class GenericMeasure(EntityType):
     identifier = String(required=True, indexed=True, maxsize=64)
     name = String(maxsize=256, required=True)
     type = String(maxsize=256, required=True)
-    filepath = String(indexed=True, maxsize=2048)
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
+    filepath = String(indexed=True, maxsize=256)
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
     results_file = SubjectRelation('File', cardinality='**') # XXX What happens when a 'File' is deleted?
     related_study = SubjectRelation('Study', cardinality='1*', inlined=True, composite='object')
     other_studies = SubjectRelation('Study', cardinality='**')
@@ -248,7 +249,7 @@ class ProcessingRun(EntityType):
     version = String(maxsize=64)
     parameters = String(maxsize=256)
     note = RichString(fulltextindexed=True)
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
     results_file = SubjectRelation('File', cardinality='**') # XXX What happens when a 'File' is deleted?
     followed_by = SubjectRelation('ProcessingRun' , cardinality='??', inlined=True)
 
@@ -256,12 +257,20 @@ class ProcessingRun(EntityType):
 ###############################################################################
 ### SATELLITE ENTITIES ########################################################
 ###############################################################################
-class ExternalResource(EntityType):
-    """ An external resource file """
+class FileSet(EntityType):
+    """ A composite resource file set """
     name = String(maxsize=256, required=True)
-    filepath = String(required=True, indexed=True, maxsize=2048)
+    format = String(maxsize=256)
+    file_entries = SubjectRelation('FileEntry', cardinality='**')
     related_study = SubjectRelation('Study', cardinality='1*', inlined=True, composite='object')
     other_studies = SubjectRelation('Study', cardinality='**')
+
+class FileEntry(EntityType):
+    """ Any resource file """
+    name = String(maxsize=256)
+    filepath = String(required=True, indexed=True, maxsize=256)
+    size = Int()
+    md5 = String( maxsize=32 )
 
 class ScoreDefinition(EntityType):
     """ A score definition """
@@ -270,6 +279,11 @@ class ScoreDefinition(EntityType):
     type = String(required=True, indexed=True, vocabulary=('string', 'numerical', 'logical'),)
     unit = String(maxsize=16, indexed=True)
     possible_values = String(maxsize=256)
+
+class FileParameter(EntityType):
+    parameter = String(required=True, indexed=True)
+    file_set = SubjectRelation('FileSet', cardinality='1*', inlined=True)
+
 
 # XXX Two different etypes for string/numerical values ?
 class ScoreValue(EntityType):
@@ -296,7 +310,7 @@ class GenericTest(EntityType):
     version = String(maxsize=16)
     language = String(maxsize=16)
     note = RichString(fulltextindexed=True)
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
     results_file = SubjectRelation('File', cardinality='**') # XXX What happens when a 'File' is deleted?
     definitions = SubjectRelation('ScoreDefinition', cardinality='*?')
 
@@ -309,8 +323,8 @@ class GenericTestRun(EntityType):
     iteration = Int(indexed=True)
     completed = Boolean(indexed=True)
     valid = Boolean(indexed=True)
-    instance_of = SubjectRelation('GenericTest', cardinality='1*', inlined=True, composite='object')
-    external_resources = SubjectRelation('ExternalResource', cardinality='**', composite='subject')
+    instance_of = SubjectRelation('GenericTest', cardinality='1*', inlined=True)
+    external_resources = SubjectRelation('FileSet', cardinality='**', composite='subject')
     results_file = SubjectRelation('File', cardinality='**') # XXX What happens when a 'File' is deleted?
     related_study = SubjectRelation('Study', cardinality='1*', inlined=True, composite='object')
     other_studies = SubjectRelation('Study', cardinality='**')
@@ -338,12 +352,12 @@ class holds(RelationDefinition):
 
 class inputs(RelationDefinition):
     subject = 'ProcessingRun'
-    object = ('GenericTestRun', 'ScoreValue')
+    object = ('GenericTestRun', 'ScoreValue', 'FileParameter')
     cardinality = '**'
 
 class outputs(RelationDefinition):
     subject = 'ProcessingRun'
-    object = ('GenericTestRun', 'ScoreValue')
+    object = ('GenericTestRun', 'ScoreValue', 'FileParameter')
     cardinality = '**'
 
 class related_processing(RelationDefinition):

@@ -113,8 +113,7 @@ class SubjectPrimaryView(BrainomicsPrimaryView):
     __select__ = BrainomicsPrimaryView.__select__ & is_instance('Subject')
 
     def iterate_attributes(self, entity):
-        return [(self._cw._('Age'), entity.display_age_for_assessments()),
-                (self._cw._('Handedness'), entity.handedness),
+        return [(self._cw._('Handedness'), entity.handedness),
                 (self._cw._('Gender'), entity.gender),]
 
     def display_additional_header(self, entity):
