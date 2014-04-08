@@ -23,6 +23,7 @@ from cubicweb.selectors import is_instance
 from cubicweb.view import EntityAdapter
 from cubicweb.entities import AnyEntity, fetch_config
 
+
 def compute_fullfilepath(entity):
     study_path = entity.related_study[0].data_filepath
     if study_path:
@@ -38,7 +39,12 @@ class Subject(AnyEntity):
     fetch_attrs, fetch_order = fetch_config(('gender', 'handedness'))
 
     def dc_title(self):
-        return self.identifier
+        if hasattr(self, "identifier"):
+            return self.identifier
+        elif hasattr(self, "subject_code"):
+            return self.subject_code
+        else:
+            return "Cannot find title"
 
     @property
     def symbol(self):

@@ -257,7 +257,7 @@ class AssessmentPrimaryView(BrainomicsPrimaryView):
         subject = entity.reverse_concerned_by[0]
         subject = u'<a href="%s">%s</a>' % (subject.absolute_url(), subject.dc_title())
         return [(self._cw._('Identifier'), entity.identifier),
-                (self._cw._('Protocol'), entity.protocol),
+                # (self._cw._('Protocol'), entity.protocol),
                 (self._cw._('Date'), entity.datetime),
                 (self._cw._('Subject'), subject),
                 (self._cw._('Study'), entity.related_study[0].view('outofcontext')),
