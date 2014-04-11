@@ -24,7 +24,7 @@ from yams.buildobjs import (EntityType, RelationDefinition, SubjectRelation, Str
 from cubes.questionnaire.schema import QuestionnaireRun, Questionnaire, Question
 from cubes.neuroimaging.schema import Scan, AnatomicalRegion
 from cubes.genomics.schema import GenomicMeasure, ColumnRef
-from cubes.medicalexp.schema  import Assessment, ProcessingRun, ScoreDefinition, ScoreValue
+from cubes.medicalexp.schema import Assessment, ProcessingRun, ScoreDefinition, ScoreValue
 
 from cubes.brainomics import COMMENTED_ENTITIES, WIKI_ENTITIES
 
@@ -39,9 +39,9 @@ ProcessingRun.add_relation(SubjectRelation('Scan', cardinality='**'), name='outp
 ProcessingRun.add_relation(SubjectRelation('GenomicMeasure', cardinality='**'), name='outputs')
 
 # Maesure -> Subject
-QuestionnaireRun.add_relation(SubjectRelation(('Subject', 'SubjectGroup'), cardinality='1*', inlined=True), name='concerns')
-Scan.add_relation(SubjectRelation(('Subject', 'SubjectGroup'), cardinality='1*', inlined=True), name='concerns')
-GenomicMeasure.add_relation(SubjectRelation(('Subject', 'SubjectGroup'), cardinality='1*', inlined=True), name='concerns')
+QuestionnaireRun.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
+Scan.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
+GenomicMeasure.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
 
 # Assessment -> Measure
 Assessment.add_relation(SubjectRelation('QuestionnaireRun', cardinality='**'), name='uses')
