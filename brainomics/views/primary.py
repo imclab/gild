@@ -113,7 +113,13 @@ class SubjectPrimaryView(BrainomicsPrimaryView):
     __select__ = BrainomicsPrimaryView.__select__ & is_instance('Subject')
 
     def iterate_attributes(self, entity):
-        return [(self._cw._('Age'), entity.display_age_for_assessments()),
+        if hasattr(entity, "display_age_for_assessments"):
+            age = entity.display_age_of_subjects()
+        elif hasattr(entity, "display_age_of_subjects"):
+            age = entity.display_age_of_subjects()
+        else:
+            raise ValueError("Cannot find age for subject")
+        return [(self._cw._('Age'), age),
                 (self._cw._('Handedness'), entity.handedness),
                 (self._cw._('Gender'), entity.gender),]
 
@@ -203,7 +209,12 @@ class CenterPrimaryView(BrainomicsPrimaryView):
     __select__ = BrainomicsPrimaryView.__select__ & is_instance('Center')
 
     def iterate_attributes(self, entity):
-        return [(self._cw._('Identifier'), entity.identifier),
+        identifier = "unknown"
+        if hasattr(entity, "identifier"):
+            identifier = entity.identifier
+        elif hasattr(entity, "name"):
+            identifier = entity.name
+        return [(self._cw._('Identifier'), identifier),
                 (self._cw._('Department'), entity.department),
                 (self._cw._('City'), entity.city),
                 (self._cw._('Country'), entity.country),]
@@ -255,10 +266,13 @@ class AssessmentPrimaryView(BrainomicsPrimaryView):
     __select__ = BrainomicsPrimaryView.__select__ & is_instance('Assessment')
 
     def iterate_attributes(self, entity):
+        protocol = "unknown"
+        if hasattr(entity, "protocol"):
+            protocol = entity.protocol
         subject = entity.reverse_concerned_by[0]
         subject = u'<a href="%s">%s</a>' % (subject.absolute_url(), subject.dc_title())
         return [(self._cw._('Identifier'), entity.identifier),
-                (self._cw._('Protocol'), entity.protocol),
+                (self._cw._('Protocol'), protocol),
                 (self._cw._('Date'), entity.datetime),
                 (self._cw._('Subject'), subject),
                 (self._cw._('Study'), entity.related_study[0].view('outofcontext')),

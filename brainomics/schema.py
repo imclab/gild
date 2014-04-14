@@ -24,7 +24,7 @@ from yams.buildobjs import (EntityType, RelationDefinition, SubjectRelation, Str
 from cubes.questionnaire.schema import QuestionnaireRun, Questionnaire, Question
 from cubes.neuroimaging.schema import Scan, AnatomicalRegion
 from cubes.genomics.schema import GenomicMeasure, ColumnRef
-from cubes.medicalexp.schema import Assessment, ProcessingRun, ScoreDefinition, ScoreValue
+from cubes.medicalexp.schema  import Assessment, ProcessingRun, ScoreDefinition, ScoreValue
 
 from cubes.brainomics import COMMENTED_ENTITIES, WIKI_ENTITIES
 
