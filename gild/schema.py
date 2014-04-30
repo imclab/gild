@@ -20,6 +20,7 @@ from cubes.medicalexp.schema import GenericTest
 from cubes.medicalexp.schema import GenericTestRun
 from cubes.medicalexp.schema import inputs
 from cubes.medicalexp.schema import outputs
+from cubes.medicalexp.schema import Subject
 
 
 from yams.buildobjs import EntityType
@@ -56,6 +57,10 @@ class FileParameter(EntityType):
     parameter = String(required=True, indexed=True)
     file_set = SubjectRelation('FileSet', cardinality='1*', inlined=True)
 
+
+
+Subject.add_relation(String(required=True, fulltextindexed=True,indexed=True),
+                     name='code_in_study')
 
 QuestionnaireRun.remove_relation("concerns")
 QuestionnaireRun.add_relation(SubjectRelation(('Subject', 'SubjectGroup'),
