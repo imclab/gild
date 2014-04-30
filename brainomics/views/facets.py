@@ -26,7 +26,7 @@ from cubicweb.selectors import is_instance
 class MeasureAgeFacet(facet.RQLPathFacet):
     __regid__ = 'measure-age-facet'
     __select__ = is_instance('Scan', 'QuestionnaireRun', 'GenomicMeasure')
-    path = ['S generates X', 'S age_for_assessment A']
+    path = ['S generates X', 'S age_of_subject A']
     order = 1
     filter_variable = 'A'
     title = _("Subject Age")
