@@ -39,9 +39,9 @@ ProcessingRun.add_relation(SubjectRelation('Scan', cardinality='**'), name='outp
 ProcessingRun.add_relation(SubjectRelation('GenomicMeasure', cardinality='**'), name='outputs')
 
 # Maesure -> Subject
-QuestionnaireRun.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
-Scan.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
-GenomicMeasure.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
+# QuestionnaireRun.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
+# Scan.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
+# GenomicMeasure.add_relation(SubjectRelation(('Subject', 'Group'), cardinality='1*', inlined=True), name='concerns')
 
 # Assessment -> Measure
 Assessment.add_relation(SubjectRelation('QuestionnaireRun', cardinality='**'), name='uses')
